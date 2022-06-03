@@ -70,22 +70,19 @@ end
 
 def run_spellr
   annotations = []
-  normal_output = nil
-  wordlist_output = nil
+  spellr_output = nil
   Dir.chdir(@GITHUB_WORKSPACE) {
-    normal_output = `bundle exec spellr`.split("\n")
-    wordlist_output = `bundle exec spellr -w`.split("\n")
+    spellr_output = `bundle exec spellr`.split("\n")
   }
   conclusion = "success"
   count = 0
 
-  locations = normal_output.map do |line|
-    line.split(' ')[0]&.gsub(/\e\[[0-9]+m/, '')
-  end
+  results = spellr_output.map do |line|
+    split = line.split(/\e\[[0-9;]+m/)
+    [split[1], split[3]]
+  end.filter { |x, y|  !x.nil? }
 
-  words = wordlist_output
-
-  words.zip(locations).each do |word, location|
+  results.each do |location, word|
     path, line, column = location.split(':')
     annotations.push({
                        "path" => path,
