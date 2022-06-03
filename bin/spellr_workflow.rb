@@ -34,9 +34,6 @@ def create_check
   http.use_ssl = true
   path = "/repos/#{@owner}/#{@repo}/check-runs"
 
-  puts path.inspect
-  puts body.inspect
-  puts @headers.inspect
   resp = http.post(path, body.to_json, @headers)
 
   if resp.code.to_i >= 300
@@ -48,6 +45,7 @@ def create_check
 end
 
 def update_check(id, conclusion, output)
+  puts("update_check: #{id}, #{conclusion}")
   body = {
     "name" => @check_name,
     "head_sha" => @GITHUB_SHA,
@@ -96,7 +94,6 @@ def run_spellr
                        "annotation_level" => 'warning',
                        "message" => "#{word} might be a misspelling?"
                      })
-    puts annotations.inspect
   end
 
   output = {
