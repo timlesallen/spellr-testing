@@ -92,7 +92,7 @@ def run_spellr
                        "path" => path,
                        "start_line" => start_line.to_i,
                        "end_line" => end_line.to_i,
-                       "annotation_level": 'warning',
+                       "annotation_level" => 'warning',
                        "message" => "#{word} might be a misspelling?"
                      })
     puts annotations.inspect
