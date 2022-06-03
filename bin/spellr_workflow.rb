@@ -86,11 +86,13 @@ def run_spellr
   words = wordlist_output
 
   words.zip(locations).each do |word, location|
-    path, start_line, end_line = location.split(':')
+    path, line, column = location.split(':')
     annotations.push({
                        "path" => path,
-                       "start_line" => start_line.to_i,
-                       "end_line" => end_line.to_i,
+                       "start_line" => line.to_i,
+                       "end_line" => line.to_i,
+                       "start_column" => column.to_i,
+                       "end_column" => column.to_i + word.length,
                        "annotation_level" => 'warning',
                        "message" => "#{word} might be a misspelling?"
                      })
