@@ -1,5 +1,9 @@
 # Spellr
 
+bad spllling.
+
+miistakes.
+
 [![Build Status](https://travis-ci.com/robotdana/spellr.svg?branch=main)](https://travis-ci.com/robotdana/spellr)
 [![Gem Version](https://badge.fury.io/rb/spellr.svg)](https://rubygems.org/gems/spellr)
 
