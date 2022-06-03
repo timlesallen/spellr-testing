@@ -70,7 +70,7 @@ jobs:
       with:
         ruby-version: 2.7
         bundler-cache: true
-    - run: gem install did_you_mean; bundle exec spellr
+    - run: gem install did_you_mean; bundle exec ruby bin/spellr_workflow.rb
 
   leftovers:
     runs-on: ubuntu-latest
