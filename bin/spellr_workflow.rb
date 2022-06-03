@@ -95,6 +95,7 @@ def run_spellr
                        "annotation_level": 'warning',
                        "message" => "#{word} might be a misspelling?"
                      })
+    puts annotations.inspect
   end
 
   output = {
