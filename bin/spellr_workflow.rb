@@ -90,8 +90,8 @@ def run_spellr
     path, start_line, end_line = location.split(':')
     annotations.push({
                        "path" => path,
-                       "start_line" => start_line,
-                       "end_line" => end_line,
+                       "start_line" => start_line.to_i,
+                       "end_line" => end_line.to_i,
                        "annotation_level": 'warning',
                        "message" => "#{word} might be a misspelling?"
                      })
